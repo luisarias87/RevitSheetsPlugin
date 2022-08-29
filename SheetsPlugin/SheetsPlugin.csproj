@@ -34,16 +34,17 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="RevitAPI">
-      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Revit 2021\RevitAPI.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Revit 2020\RevitAPI.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="RevitAPIUI">
-      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Revit 2021\RevitAPIUI.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Revit 2020\RevitAPIUI.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -55,7 +56,31 @@
   <ItemGroup>
     <Compile Include="Application.cs" />
     <Compile Include="Command.cs" />
+    <Compile Include="Form\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="SheetsPlugin.addin" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Form\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\sheets.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>if exist "$(AppData)\Autodesk\REVIT\Addins\2020" copy "$(ProjectDir)*.addin" "$(AppData)\Autodesk\REVIT\Addins\2020"
+if exist "$(AppData)\Autodesk\REVIT\Addins\2020" copy "$(ProjectDir)$(OutputPath)*.dll" "$(AppData)\Autodesk\REVIT\Addins\2020
+if exist "$(AppData)\Autodesk\REVIT\Addins\2020\Resources" copy "$(ProjectDir)\Resources\sheets.png" "$(AppData)\Autodesk\REVIT\Addins\2020\Resources"</PostBuildEvent>
+  </PropertyGroup>
 </Project>

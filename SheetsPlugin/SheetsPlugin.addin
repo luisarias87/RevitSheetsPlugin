@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+	<AddIn Type="Application">
+		<Name>SheetsPlugin</Name>
+		<Assembly>SheetsPlugin.dll</Assembly>
+		<AddInId>C1A987F8-A7F3-4794-9ABF-710E8123EAFA</AddInId>
+		<FullClassName>SheetsPlugin.Application</FullClassName>
+		<VendorId>ADSK</VendorId>
+		<VendorDescription>Autodesk, www.autodesk.com</VendorDescription>
+	</AddIn>
+</RevitAddIns>
+
+

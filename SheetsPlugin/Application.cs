@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.Attributes;
+using System.Reflection;
+using System.IO;
+using System.Windows.Media.Imaging;
 
 
 namespace SheetsPlugin
@@ -19,7 +22,24 @@ namespace SheetsPlugin
 
         public Result OnStartup(UIControlledApplication application) 
         {
-            createRibbonPanel(application);
+            
+            RibbonPanel panel = createRibbonPanel(application);
+
+            string thisAssemblyPath = Assembly.GetExecutingAssembly().Location;
+            // BUTTON FOR THE SINGLE-THREADED WPF OPTION
+            if (panel.AddItem(
+                new PushButtonData("WPFforms", "WPF\nforms", thisAssemblyPath,
+                    "SheetsPlugin.Command")) is PushButton button)
+            {
+                // defines the tooltip displayed when the button is hovered over in Revit's ribbon
+                button.ToolTip = "WPF Form Example";
+                // defines the icon for the button in Revit's ribbon - note the string formatting
+                Uri uriImage = new Uri(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Resources", "Sheets.png"));
+                BitmapImage largeImage = new BitmapImage(uriImage);
+                button.LargeImage = largeImage;
+            }
+
+
 
             return Result.Succeeded;
            
@@ -33,7 +53,7 @@ namespace SheetsPlugin
 
         public RibbonPanel createRibbonPanel(UIControlledApplication app) 
         {
-            string tabName = "Sheets";
+            string tabName = "My Tools";
             RibbonPanel ribbonPanel = null;
 
             try
@@ -69,6 +89,8 @@ namespace SheetsPlugin
 
         
         }
+        
+
 
         
 
