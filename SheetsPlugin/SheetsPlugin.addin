@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <RevitAddIns>
 	<AddIn Type="Application">
-		<Name>SheetsPlugin</Name>
-		<Assembly>SheetsPlugin.dll</Assembly>
-		<AddInId>C1A987F8-A7F3-4794-9ABF-710E8123EAFA</AddInId>
-		<FullClassName>SheetsPlugin.Application</FullClassName>
+		<Name>TwentyTwo Sample</Name>
+		<Assembly>C:\Users\larias\source\repos\RevitSheetsPlugin\SheetsPlugin\bin\Debug\SheetsPlugin.dll</Assembly>
+		<AddInId>76f0675e-1b49-4d49-8db8-03ef8e2f34b7</AddInId>
+		<FullClassName>SheetsPlugin.MainClass</FullClassName>
 		<VendorId>ADSK</VendorId>
 		<VendorDescription>Autodesk, www.autodesk.com</VendorDescription>
 	</AddIn>

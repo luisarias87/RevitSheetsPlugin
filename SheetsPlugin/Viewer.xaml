@@ -1,0 +1,35 @@
+﻿<Page x:Class="SheetsPlugin.Viewer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SheetsPlugin"
+             mc:Ignorable="d" Height="360" Width="320" 
+             d:DesignHeight="350" d:DesignWidth="280" Title="Wpf Sample" Background="White" >
+  <Border BorderBrush="LightGray" BorderThickness="1" >
+    <Grid Background="white" Margin="5">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+      </Grid.RowDefinitions>
+      <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="5">
+        <TextBlock Text="Document Name    :"/>
+        <TextBlock Name="docName" />
+      </StackPanel>
+      <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="5">
+        <TextBlock Text="ActiveView Name    :"/>
+        <TextBlock Name="viewName" />
+      </StackPanel>
+      <TreeView Grid.Row="2" Name="treeview" Margin="5"/>
+      <StackPanel Grid.Row="6">
+        <Button Click="PickObject_Click" x:Name="PickObject" Grid.Row="0" Height="20" Content="PICK OBJECT"  ></Button>
+        <ListBox x:Name="pickedListBox"></ListBox>
+      </StackPanel>
+      
+      
+
+    </Grid>
+  </Border>
+</Page>
